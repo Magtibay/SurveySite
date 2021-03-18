@@ -1,0 +1,47 @@
+
+<%- include partials/header.ejs%>
+<%- include partials/main_nav.ejs%>
+<%- include partials/scripts_nav.ejs%>
+  
+
+  <!-- Main Content -->
+  <html>
+    <body>
+    <main class="container">
+      <div class="jumbotron">
+        <h1 align="center" class="display-4">Welcome to the <%= title %> page</h1>
+
+
+  <% if (title == "Home") { %>
+      <%- include home.ejs %>
+        <% } %>
+
+  <% if (title == "About") { %>
+    <%- include about.ejs %>
+       <% } %>
+
+  <% if (title == "Contact") { %>
+    <%- include contact.ejs %>
+       <% } %>
+
+       <% if (title == "Survey") { %>
+    <%- include survey\add.ejs%>
+    <%- include survey\create.ejs %>
+    <%- include survey\edit.ejs %>
+       <% } %>
+
+    </div>
+      </main>
+        </body>
+  
+
+<!-- Pages Control -->
+   
+<%- include partials/footer_nav.ejs%> 
+
+
+
+  
+
+
+
