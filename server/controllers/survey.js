@@ -6,7 +6,7 @@ let mongoose = require('mongoose');
 let Survey = require('../models/survey');
 
 module.exports.displaySurveyList = (req, res, next) => {
-    Survey.find((err, surveyList) => {
+    Survey.find((err, SurveyList) => {
         if(err)
         {
             return console.error(err);
@@ -15,7 +15,7 @@ module.exports.displaySurveyList = (req, res, next) => {
         {
             //console.log(surveyList);
 
-            res.render('survey/list', {title: 'Survey', surveyList: surveyList});      
+            res.render('survey/list', {title: 'Survey', surveyList: SurveyList});      
         }
     });
 }
@@ -53,7 +53,7 @@ Add your code here to display EDIT
 module.exports.DisplayEditPage = (req,res,next) =>{
     let id = req.params.id;
 
-    Survey.findById(id,(err, surveyToEdit) =>
+    Survey.findById(id,(err, SurveyToEdit) =>
     {
         if(err)
         {
@@ -63,7 +63,7 @@ module.exports.DisplayEditPage = (req,res,next) =>{
         else
         {
             //show the edit view
-            res.render('survey/edit', {title: 'Edit survey', survey: surveyToEdit})
+            res.render('survey/edit', {title: 'Edit survey', survey: SurveyToEdit})
         }
     });
 }
