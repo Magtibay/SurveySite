@@ -9,19 +9,19 @@ let userModel= require('../models/users');
 let User = userModel.User; 
 
 module.exports.displayHomePage = (req, res, next) => {
-    res.render('index', {title: 'Home'});
+    res.render('index', {title: 'Home', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayAboutPage = (req, res, next) => {
-    res.render('index', { title: 'About'});
+    res.render('index', { title: 'About', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayContactPage = (req, res, next) => {
-    res.render('index', { title: 'Contact'});
+    res.render('index', { title: 'Contact', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displaySurveyPage = (req, res, next) => {
-    res.render('index', { title: 'Survey'});
+    res.render('index', { title: 'Survey', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayLoginPage = (req, res, next) => {
@@ -61,7 +61,7 @@ module.exports.processLoginPage = (req, res, next) => {
             {
                 return next(err);
             }
-            return res.redirect('/contact-list');
+            return res.redirect('/home');
         });
     })(req, res, next);
 }

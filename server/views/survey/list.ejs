@@ -7,8 +7,12 @@
     <div class="row">
         <div class="offset-md-1 col-md-12">
         <h1>Survey List</h1><br><br>
+
+         <% if(typeof displayName == 'string' && displayName) { %>
         <a href="/survey-list/add" class="btn btn-primary" role="button">
         <i class="fas fa-plus-circle"></i> Add a Survey</a>
+        <% } %>
+
         <br><br>
             <table class="table table-bordered table-striped table-hover">
                 <!-- Header Row -->
@@ -28,10 +32,13 @@
                     <td class="text-center col-4"><%= SurveyList[count].description %></td>
                     <td class="text-center col-2"><%= SurveyList[count].author %></td>
                     <td class="text-center col-3">
+
+                     <% if(typeof displayName == 'string' && displayName) { %>
                     <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary ">
                     <i class="fas fa-pencil-alt"></i> Edit</a>
                     <a href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger ">
                         <i class="fas fa-trash-alt"></i> Remove</a>
+                        <% } %>
                     </td>
                     
                  </tr>
