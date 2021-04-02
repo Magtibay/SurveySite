@@ -1,9 +1,64 @@
+<%- include ../partials/header.ejs%>
+<%- include ../partials/main_nav.ejs%>
 
-    <!-- I dont think we really need to edit the survey,
-because once a survey query is done there is not editing,
-for example no changing answers or questions -->
+<!-- ADD SURVEY PAGE -->
 
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1>Edit Survey</h1>
+            <form class="form" method="POST">
+                <div class="form-group">
+                    <label for="topicTextField">Survey Topic</label>
+                    <input type="text" class="form-control" 
+                    id="topicTextField" placeholder="Enter your survey topic here" 
+                    value="<%= survey.topic%>"
+                    name="topic" required>
+                </div>
+                <div class="form-group">
+                    <label for="descriptionTextArea">Survey description</label>
+                    <textarea type="text" class="form-control" 
+                    id="descriptionTextArea" placeholder="Enter a short description of your survey" 
+                    name="description" required>
+                    "<%= survey.description%>"
+                </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="authorTextArea">Author</label>
+                    <input type="text" class="form-control" 
+                    id="descriptionTextArea" placeholder="Enter your name" 
+                    value="<%= survey.author%>"
+                    name="author" required>
+                </div>
+                <div class="form-group">
+                    <label for="questionTextField">First question</label>
+                    <input type="text" class="form-control" 
+                    id="questionTextField" placeholder="Enter your question." 
+                    value="<%= survey.q1%>"
+                    name="q1" required>
+                </div>
+                <div class="form-group">
+                    <label for="questionTextField">Second question</label>
+                    <input type="text" class="form-control" 
+                    id="questionTextField" placeholder="Enter your question." 
+                    value="<%= survey.q2%>"
+                    name="question" required>
+                </div>
+                <div class="form-group">
+                    <label for="questionTextField">Third question</label>
+                    <input type="text" class="form-control" 
+                    id="questionTextField" placeholder="Enter your question." 
+                    value="<%= survey.q3%>"
+                    name="question" required>
+                </div>
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Update</button>
+                <a href="/survey-list" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> Cancel</a>    
+            </form>
+        </div>
+    </div>
+</div>
 
-
-
-
+<%- include ../partials/footer_nav.ejs%> 
+<%- include ../partials/scripts_nav.ejs%> 

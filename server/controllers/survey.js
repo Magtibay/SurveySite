@@ -15,7 +15,7 @@ module.exports.displaySurveyList = (req, res, next) => {
         {
             //console.log(surveyList);
 
-            res.render('survey/list', {title: 'Survey', surveyList: SurveyList});      
+            res.render('survey/list', {title: 'Survey', SurveyList: SurveyList});      
         }
     });
 }
@@ -26,10 +26,13 @@ module.exports.displayAddPage = (req, res, next) => {
 
 module.exports.processAddPage = (req, res, next) => {
     let newSurvey = Survey({
-        "name": req.body.name,
+        "topic": req.body.topic,
        
         "description": req.body.description,
-        "question": req.body.question
+        "author": req.body.author,
+        "q1": req.body.q1,
+        "q2": req.body.q2,
+        "q3": req.body.q3
     });
 
     Survey.create(newSurvey, (err, Survey) =>{
@@ -77,14 +80,17 @@ module.exports.ProcessEditPage =(req,res,next) =>{
 
     let updatedSurvey = Survey({
         "_id": id,
-        "name": req.body.name,  
+        "topic": req.body.topic,
         "description": req.body.description,
-        "question": req.body.question
+        "author": req.body.author,
+        "q1": req.body.q1,
+        "q2": req.body.q2,
+        "q3": req.body.q3
 
       
     });
 
-    survey.updateOne({_id: id}, updatedSurvey, (err) => {
+    Survey.updateOne({_id: id}, updatedSurvey, (err) => {
         if(err)
         {
             console.log(err);
