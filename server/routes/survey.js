@@ -7,23 +7,32 @@ let Survey = require('../models/survey');
 
 let surveyController = require('../controllers/survey');
 
-
+//helper function for guard purposes
+function requireAuth(req,res,next)
+{
+    //check if the user is logged in
+    if(!req.isAuthenticated())
+    {
+        return res.redirect('/login');
+    }
+    next();
+}
 
 /* GET Route for the survey List page - READ Operation */
 router.get('/', surveyController.displaySurveyList);
 
 /* GET Route for displaying the Add page - CREATE Operation */
-router.get('/add', surveyController.displayAddPage);
+router.get('/add', requireAuth, surveyController.displayAddPage);
 
 /* POST Route for processing the Add page - CREATE Operation */
-router.post('/add', surveyController.processAddPage);
+router.post('/add', requireAuth, surveyController.processAddPage);
 
 /* GET Route for displaying the Edit page - UPDATE Operation */
-router.get('/edit/:id', surveyController.DisplayEditPage);
+router.get('/edit/:id', requireAuth, surveyController.DisplayEditPage);
 
 /* POST Route for processing the Edit page - UPDATE Operation */
-router.post('/edit/:id', surveyController.ProcessEditPage);
+router.post('/edit/:id', requireAuth, surveyController.ProcessEditPage);
 
 /* GET to perform  Deletion - DELETE Operation */
-router.get('/delete/:id', surveyController.PerformDelete);
+router.get('/delete/:id', requireAuth, surveyController.PerformDelete);
 module.exports = router;
