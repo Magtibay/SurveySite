@@ -13,12 +13,12 @@
                 if(!confirm("Are you sure?")) 
                 {
                     event.preventDefault();
-                    window.location.assign('survey/list');
+                    window.location.assign('/survey-list');
                 }
             });
         }
     }
 
-    window.addEventListener("Load", Start);
+    window.addEventListener("load", Start);
 
 })();
