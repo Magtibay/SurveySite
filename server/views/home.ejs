@@ -1,24 +1,29 @@
 
 <!-- Information about home page -->
-    
-<h1 align="center" class="display-4">Welcome to LCCJM Survey Site</h1>
-  <div align="center" class="container">
-
-        <h1> </h1>
-    <h2><span>You can now create your own survey for free...</span></h2>
-   
-<br><br>
-    <div>
-      <p class="display-5">Start Creating your own Survey by Clicking the button below!<br> You may also checkout our existing Survey</p>
-
-
+  <div>
+    <div class="position-relative text-center">
+      <video width="840" height="475" src="/assets/videos/background.mp4" autoplay muted loop>
+        Your browser does not support the video tag
+      </video>
+      <div class="overlay">
+        <h1 id="home-text">Welcome to LCCJM Survey Site</h1>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div>
+    <p class="display-5" style="text-align: center;">
+      Start Creating your own Survey by Clicking the button below!
+      <br> You may also checkout our existing Survey
+    </p>
+    <div class="btn-center">
       <a href="/survey-list/add" class="btn btn-primary" role="button">
         <i class="fas fa-plus-circle"></i> Create a Survey</a>
-
-        <a href="/survey-list" class="btn btn-primary" role="button">
-          <i class="fas fa-list"></i> View Existing Survey</a>
-
   
+      <a href="/survey-list" class="btn btn-primary" role="button">
+        <i class="fas fa-list"></i> View Existing Survey</a>
     </div>
+  </div>
+</div>
 
-  <%- include partials/footer_nav.ejs%> 
+<%- include partials/footer_nav.ejs%> 
