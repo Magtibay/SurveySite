@@ -4,9 +4,25 @@ let mongoose = require('mongoose');
 
 // create a reference to the model
 let Survey = require('../models/survey');
+let SurveyModel = Survey.model;
+
+
+module.exports.displayParticipatePage = (req, res, next) => {
+    Survey.find((err, SurveyList) => {
+        if(err)
+        {
+            return console.error(err);
+        }
+        else
+        {
+
+            res.render('survey/participate', {title: 'Participate', SurveyList: SurveyList, displayName: req.user ? req.user.displayName : ''});      
+        }
+        });
+}
 
 module.exports.displaySurveyList = (req, res, next) => {
-    Survey.find((err, SurveyList) => {
+    Survey.find({ author: req.user.displayName},(err, SurveyList) => {
         if(err)
         {
             return console.error(err);
@@ -21,15 +37,14 @@ module.exports.displaySurveyList = (req, res, next) => {
 }
 
 module.exports.displayAddPage = (req, res, next) => {
-    res.render('survey/add', {title: 'Add Survey', displayName: req.user ? req.user.displayName : ''})          
-}
+    res.render('survey/add', {title: 'Add Survey', displayName: req.user ? req.user.displayName : ''});         
+};
 
 module.exports.processAddPage = (req, res, next) => {
     let newSurvey = Survey({
         "topic": req.body.topic,
-       
         "description": req.body.description,
-        "author": req.body.author,
+        "author": req.user.displayName,
         "q1": req.body.q1,
         "q2": req.body.q2,
         "q3": req.body.q3
@@ -105,7 +120,22 @@ module.exports.ProcessEditPage =(req,res,next) =>{
     })
 }
 
+//Renders survey-question view
+module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
+    let id = req.params.id;
 
+    Survey.findById(id, (err, SurveyList) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } 
+        else {
+            res.render('survey/answer', {title: 'Participate', survey: SurveyList, displayName: req.user ? req.user.displayName : ''});     
+                
+         
+        }
+    });
+};
 /*
 Add your code here to perform DELETE operation
 */

@@ -1,0 +1,57 @@
+<%- include ../partials/header.ejs%>
+<%- include ../partials/main_nav.ejs%>
+  
+ <!-- Participate Survey Page -->
+  <!-- Main Content -->
+  <main class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-12">
+        <h1>List of Active Surveys</h1><br><br>
+
+        <% if(typeof displayName == 'string' && displayName) { %>
+            <a href="/survey-list" class="btn btn-primary ">
+            <i class="fas fa-pencil-alt"></i> Access My Survey</a>
+           
+                <% } %>
+       
+        <br><br>
+            <table class="table table-bordered table-striped table-hover">
+                <!-- Header Row -->
+                <tr class="d-flex">
+                    <th class="text-center col-3">Survey Topic</th>
+                    <th class="text-center col-4">Survey Description</th>
+                    <th class="text-center col-2">Author</th>
+                    <th class="text-center col-3">Actions</th>
+                                                 
+                </tr>
+
+            <!-- Repeatable Template Row -->
+                <% for(let count = 0; count < SurveyList.length; count++){ %>
+                    <tr class="d-flex">
+                    <td class="text-center col-3"><%= SurveyList[count].topic %></td>
+                    <td class="text-center col-4"><%= SurveyList[count].description %></td>
+                    <td class="text-center col-2"><%= SurveyList[count].author %></td>
+                    <td class="text-center col-3">
+            
+
+                        <% if(typeof displayName == 'string' && displayName) { %>
+                            <a href="/survey-list/answer/<%= SurveyList[count].id %>" class="btn btn-primary ">
+                            <i class="fas fa-plus-circle"></i> Answer Survey</a>
+                            <% } %>
+                    </td>
+                    
+                 </tr>
+                 <% } %>   
+            </table>
+        </div>
+    </div>
+</main>
+<%- include ../partials/footer_nav.ejs%> 
+<%- include ../partials/scripts_nav.ejs%>
+
+
+
+
+
+
+

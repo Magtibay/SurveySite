@@ -7,9 +7,20 @@ let passport = require('passport');
 //define the User Model instance
 let userModel= require('../models/users');
 let User = userModel.User; 
+let Survey = require('../models/survey');
 
 module.exports.displayHomePage = (req, res, next) => {
-    res.render('index', {title: 'Home', displayName: req.user ? req.user.displayName : ''});
+    Survey.find((err, SurveyList) => {
+        if(err)
+        {
+            return console.error(err);
+        }
+        else
+        {
+
+            res.render('index', {title: 'Home', SurveyList: SurveyList, displayName: req.user ? req.user.displayName : ''});      
+        }
+        });
 }
 
 module.exports.displayAboutPage = (req, res, next) => {
