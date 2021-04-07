@@ -7,8 +7,8 @@ let Survey = require('../models/survey');
 let SurveyModel = Survey.model;
 
 //connect the survey entry model
-let surveyEntryModel = require("../models/surveyEntry");
-let SurveyEntry = surveyEntryModel.Model; // alias
+let SurveyEntry = require("../models/surveyEntry");
+let SurveyEntryModel = SurveyEntry.model; // alias
 
 
 module.exports.displayParticipatePage = (req, res, next) => {
@@ -169,6 +169,42 @@ module.exports.ProcessSurveyQuestionPage = (req, res, next) => {
       });
 
     }
+
+
+    //Render survey-result view
+module.exports.DisplaySurveyResultPage = (req, res, next) => {
+    let id = req.params.id;
+
+    Survey.findById(id, (err, SurveyList) => {
+
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } else {
+
+    SurveyEntry.findOne({SurveyID: id}, (err, SurveyEntry) => {
+                if (err) {
+                    console.log(err);
+                    res.end(err);
+                } else {
+
+                    res.render("survey/result", {
+                        title: "Survey Result",
+                        SurveyList: SurveyList,
+                        SurveyEntry: SurveyEntry,
+                        displayName: req.user ? req.user.displayName : "",
+                        total: SurveyEntry.SurveyID.length
+                    });
+                }
+           
+            
+            });
+
+        }
+        
+    });
+}
+
 
 /*
 Add your code here to perform DELETE operation

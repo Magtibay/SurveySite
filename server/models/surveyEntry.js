@@ -3,11 +3,10 @@
 
 //surveyEntry variables
 let mongoose = require('mongoose');
-let Schema = mongoose.Schema;
-let Model = mongoose.model;
+
 
 //Model Structure
-let SurveyEntry = new Schema({
+let SurveyEntryModel = mongoose.Schema ({
     SurveyID: String,
     UserID: String,
     a1: String,
@@ -19,4 +18,4 @@ let SurveyEntry = new Schema({
 });
 
 //Processes Model
-module.exports.Model = Model('SurveyEntry', SurveyEntry);
+module.exports = mongoose.model('SurveyEntry', SurveyEntryModel);

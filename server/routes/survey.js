@@ -42,6 +42,9 @@ router.get('/answer/:id', requireAuth, surveyController.DisplaySurveyQuestionPag
 /* POST Answer Survey page. */
 router.post('/answer/:id', surveyController.ProcessSurveyQuestionPage);
 
+/* GET Survey Result page. */
+router.get('/result/:id', surveyController.DisplaySurveyResultPage);
+
 /* GET to perform  Deletion - DELETE Operation */
 router.get('/delete/:id', requireAuth, surveyController.PerformDelete);
 module.exports = router;

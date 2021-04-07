@@ -21,9 +21,9 @@
                 <!-- Header Row -->
                 <tr class="d-flex">
                     <th class="text-center col-3">Survey Topic</th>
-                    <th class="text-center col-4">Survey Description</th>
+                    <th class="text-center col-3">Survey Description</th>
                     <th class="text-center col-2">Author</th>
-                    <th class="text-center col-3">Actions</th>
+                    <th class="text-center col-4">Actions</th>
                 
                     
                    
@@ -33,9 +33,9 @@
                 <% for(let count = 0; count < SurveyList.length; count++){ %>
                     <tr class="d-flex">
                     <td class="text-center col-3"><%= SurveyList[count].topic %></td>
-                    <td class="text-center col-4"><%= SurveyList[count].description %></td>
+                    <td class="text-center col-3"><%= SurveyList[count].description %></td>
                     <td class="text-center col-2"><%= SurveyList[count].author %></td>
-                    <td class="text-center col-3">
+                    <td class="text-center col-4">
             
 
                      <% if(typeof displayName == 'string' && displayName) { %>
@@ -43,6 +43,8 @@
                     <i class="fas fa-pencil-alt"></i> Edit</a>
                     <a href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger ">
                         <i class="fas fa-trash-alt"></i> Remove</a>
+                        <a href="/survey-list/result/<%= SurveyList[count]._id %>" class="btn btn-primary ">
+                            <i class="fas fa-pencil-alt"></i> Results</a>
                         <% } %>
                     </td>
                     

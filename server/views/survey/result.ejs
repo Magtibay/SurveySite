@@ -1,0 +1,52 @@
+
+<%- include ../partials/header.ejs%>
+<%- include ../partials/main_nav.ejs%>
+  
+<!-----------------------------SURVEY RESULT VIEW ----------------------------------->
+
+
+<!-- MAIN CONTENT -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-12">
+        
+            <h1>Your Survey Results</h1>
+            <h3 display-4>Survey Name: <%= SurveyList.topic %></h3>
+            <h4 display-4>Survey Description: <%= SurveyList.description %></h4>
+            <h5 display-4>Number of Respondents:  <%= SurveyEntry.length %></h5><br>
+
+            <br>
+
+
+            <table class="table table-bordered table-striped table-hover">
+                <!-- Header Row -->
+                <tr class="d-flex">
+                    <th class="text-center col-3">Respondents Name: </th>
+                    <th class="text-center col-3"><%= SurveyList.q1 %> </th>
+                    <th class="text-center col-3"><%= SurveyList.q2 %></th>
+                    <th class="text-center col-3"><%= SurveyList.q3 %></th>
+
+                    </tr>
+
+                     <!-- Repeatable Template Row -->
+                <% for(let count = 0; count < SurveyEntry.length; count++){ %>
+
+                    <tr class="d-flex">
+                    <td class="text-center col-3"><%= SurveyEntry[count].UserID %></td>
+                    <td class="text-center col-3"><%= SurveyEntry[count].a1  %></td>
+                    <td class="text-center col-3"><%= SurveyEntry[count].a2  %></td>
+                    <td class="text-center col-3"><%= SurveyEntry[count].a3  %></td>
+                    </tr>
+                    <% } %>   
+            </table>
+            </div>
+            </div>
+
+
+
+
+
+
+
+<%- include ../partials/footer_nav.ejs%> 
+<%- include ../partials/scripts_nav.ejs%>
