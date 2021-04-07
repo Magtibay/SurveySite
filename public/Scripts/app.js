@@ -30,7 +30,7 @@
     function Start()
     {
 
-        let submitAnswer = document.querySelector(".participateAnswer btn-primary");
+        let submitAnswer = document.querySelector(".btn-primary");
         
         for(button of submitAnswer)
         {
