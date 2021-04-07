@@ -1,5 +1,6 @@
 
-
+<%- include ../partials/header.ejs%>
+<%- include ../partials/main_nav.ejs%>
 
 
         <!-- CREATING A NEW SURVEY -->
@@ -10,9 +11,11 @@
                     <h1>
                         <%= title %>
                     </h1>
-                    <a href="/survey-list/add" class="btn btn-primary" role="button">
+                    <a href="/survey-list/add" class="btn btn-btn-primary" role="button">
                         <i class="fas fa-plus-circle"></i> Add a Survey</a>
                 </div>
             </div>
         </main>
 
+        <%- include ../partials/footer_nav.ejs%> 
+        <%- include ../partials/scripts_nav.ejs%>

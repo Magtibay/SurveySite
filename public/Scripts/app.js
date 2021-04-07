@@ -22,3 +22,28 @@
     window.addEventListener("load", Start);
 
 })();
+
+/// Take you for participating
+
+(function(){
+
+    function Start()
+    {
+
+        let submitAnswer = document.querySelector(".participateAnswer btn-primary");
+        
+        for(button of submitAnswer)
+        {
+            button.addEventListener('click', (event)=>{
+                if(!confirm("Thank you for responding!")) 
+                {
+                    event.preventDefault();
+                    window.location.assign('/survey-list/participate');
+                }
+            });
+        }
+    }
+
+    window.addEventListener("load", Start);
+
+})();
