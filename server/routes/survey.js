@@ -36,8 +36,11 @@ router.get('/edit/:id', requireAuth, surveyController.DisplayEditPage);
 /* POST Route for processing the Edit page - UPDATE Operation */
 router.post('/edit/:id', requireAuth, surveyController.ProcessEditPage);
 
-/* POST Route for displaying the Answer Survey Page */
-router.post('/answer/:id', requireAuth, surveyController.DisplaySurveyQuestionPage);
+/* GET Route for displaying the Answer Survey Page */
+router.get('/answer/:id', requireAuth, surveyController.DisplaySurveyQuestionPage);
+
+/* POST Answer Survey page. */
+router.post('/answer/:id', surveyController.ProcessSurveyQuestionPage);
 
 /* GET to perform  Deletion - DELETE Operation */
 router.get('/delete/:id', requireAuth, surveyController.PerformDelete);

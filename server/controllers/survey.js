@@ -6,6 +6,10 @@ let mongoose = require('mongoose');
 let Survey = require('../models/survey');
 let SurveyModel = Survey.model;
 
+//connect the survey entry model
+let surveyEntryModel = require("../models/surveyEntry");
+let SurveyEntry = surveyEntryModel.Model; // alias
+
 
 module.exports.displayParticipatePage = (req, res, next) => {
     Survey.find((err, SurveyList) => {
@@ -130,12 +134,42 @@ module.exports.DisplaySurveyQuestionPage = (req, res, next) => {
             res.end(err);
         } 
         else {
-            res.render('survey/answer', {title: 'Participate', survey: SurveyList, displayName: req.user ? req.user.displayName : ''});     
+            res.render('survey/answer', {title: 'Participate', SurveyList: SurveyList, displayName: req.user ? req.user.displayName : ''});     
                 
          
         }
     });
 };
+
+//processes question page
+module.exports.ProcessSurveyQuestionPage = (req, res, next) => {
+      
+    let id = req.params.id
+
+    let newSurveyEntry = SurveyEntry({
+        "_id": SurveyEntry._id,
+        "SurveyID": id,
+        "UserID": req.user.displayName,
+        "a1": req.body.a1,
+        "a2": req.body.a2,
+        "a3": req.body.a3
+    });
+
+    SurveyEntry.create(newSurveyEntry, (err, Survey) =>{
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        else
+        {
+            // refresh the survey list
+            res.redirect('/survey-list/participate');
+        }
+      });
+
+    }
+
 /*
 Add your code here to perform DELETE operation
 */
