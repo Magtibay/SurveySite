@@ -13,7 +13,8 @@
             <h1>Your Survey Results</h1>
             <h3 display-4>Survey Name: <%= SurveyList.topic %></h3>
             <h4 display-4>Survey Description: <%= SurveyList.description %></h4>
-            <h5 display-4>Number of Respondents:  <%= SurveyEntry.length %></h5><br>
+            <h4 display-4>Survey Author: <%= SurveyList.author %></h4>
+            <h5 display-4>Number of Respondents:  <%= total %></h5><br>
 
             <br>
 
@@ -33,20 +34,14 @@
 
                     <tr class="d-flex">
                     <td class="text-center col-3"><%= SurveyEntry[count].UserID %></td>
-                    <td class="text-center col-3"><%= SurveyEntry[count].a1  %></td>
-                    <td class="text-center col-3"><%= SurveyEntry[count].a2  %></td>
+                    <td class="text-center col-3"><%= SurveyEntry[count].a1 %></td>
+                    <td class="text-center col-3"><%= SurveyEntry[count].a2 %></td>
                     <td class="text-center col-3"><%= SurveyEntry[count].a3  %></td>
                     </tr>
                     <% } %>   
             </table>
             </div>
             </div>
-
-
-
-
-
-
 
 <%- include ../partials/footer_nav.ejs%> 
 <%- include ../partials/scripts_nav.ejs%>

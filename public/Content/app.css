@@ -10,7 +10,7 @@
 }
 #home-text
 {
-    color: azure;
+    color: darkslategray;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 7vw;
     text-align: center;
@@ -18,4 +18,10 @@
 .btn-center
 {
     text-align: center;
+}
+
+body
+{
+background-image: url("/assets/images/bg3.png");
+background-repeat: no-repeat;
 }

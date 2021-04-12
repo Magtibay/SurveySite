@@ -182,18 +182,22 @@ module.exports.DisplaySurveyResultPage = (req, res, next) => {
             res.end(err);
         } else {
 
-    SurveyEntry.findOne({SurveyID: id}, (err, SurveyEntry) => {
+    SurveyEntry.findOne({SurveyID: SurveyList._id }, (err, SurveyEntry) => {
                 if (err) {
                     console.log(err);
                     res.end(err);
                 } else {
+                   
+    
 
                     res.render("survey/result", {
                         title: "Survey Result",
                         SurveyList: SurveyList,
                         SurveyEntry: SurveyEntry,
                         displayName: req.user ? req.user.displayName : "",
-                        total: SurveyEntry.SurveyID.length
+                        total: SurveyEntry.length,
+
+
                     });
                 }
            
